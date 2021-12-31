@@ -1,3 +1,5 @@
+Online “Store” that enable multiple sellers to set up shops that buyers can purchase.
+
 /api/auth/signup
 {  "firstName": "lital",
    "lastName": "Fine",
