@@ -75,6 +75,10 @@ POST: /api/stores/update/items
     ]
 }
 
+POST: api/stores/purchase
+
+[[item_id,item_qauntity]]
+
 GET: api/stores/catalog/{id}
 
 GET: api/stores/catalogs
