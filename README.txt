@@ -1,55 +1,97 @@
-Online “Store” that enable multiple sellers to set up shops that buyers can purchase.
+Online store that enable multiple sellers to set up shops that buyers can purchase.
+https://theonlinefinestore.herokuapp.com/
 
-/api/auth/signup
-{  "firstName": "lital",
-   "lastName": "Fine",
-   "userName": "owner",
-   "email": "lital@gmail.com",
-   "password": 12345678,
-   "role":["owner"],
-   "paymentFullName":"Lital Fine",
-   "paymentExpDate":"24-2024",
-   "paymentCardNum":"12345678765458765"
+POST: /api/auth/signup
+{  "firstName": "my_firstname",
+   "lastName": "my_lastname",
+   "userName": "my_username",
+   "email": "my_email",
+   "password": "my_password",
+   "role":["owner","customer"],
+   "paymentFullName":"payment_fullname",
+   "paymentExpDate":"payment_expirationdate",
+   "paymentCardNum":"payment_cardnum"
 }
 
-/api/auth/login
+POST: /api/auth/login
 {   
-   "userName": "owner",
-   "password": 12345678
+   "userName": "my_username",
+   "password": "my_password"
 }
 
-/api/stores/store
+POST: /api/stores/store
 {
-    "name":"Home"
+    "name":"store_name"
 }
 
-/api/stores/catalogs
+POST: /api/stores/catalogs
 {
-    "name":"Home",
-    "catalogsList":[
-        {"itemsList":[{"name": "Chair", "price" : 500, "stock":30}, {"name": "Desk", "price" : 1200, "stock":40}, {"name": "Bag", "price" : 60, "stock":10}, {"name": "Lamp", "price" : 400, "stock":200}]},
-	{"itemsList":[{"name": "Microwave", "price" : 2000, "stock":10}, {"name": "Toaster", "price" : 500, "stock":400}]}
-        ]}
-
-/api/stores/items
+    "name": "store_name",
+    "catalogsList": [
+        {
+            "itemsList": [
+                {
+                    "name": "item_name",
+                    "price": item_price,
+                    "stock": item_stock
+                }
+            ]
+        }
+    ]
+}
+        
+POST: /api/stores/items
 {
-    "name":"Home",
-    "catalogsList":[
-        {"id":1, "itemsList":[{"name": "Pen", "price" : 5, "stock":300}, {"name": "Notebook", "price" : 10, "stock":400}, {"name": "Marker", "price" : 5, "stock":100}]}]
+    "name": "store_name",
+    "catalogsList": [
+        {
+            "id":catalog_id,
+            "itemsList": [
+                {
+                    "name": "item_name",
+                    "price": item_price,
+                    "stock":item_stock
+                }
+            ]
+        }
+    ]
 }
 
-/api/stores/update/items
+POST: /api/stores/update/items
 {
-    "name":"Home",
-    "catalogsList":[
-        {"id":1, "itemsList":[{"id":2,"name": "Pen", "price" : 10}]}]
+    "name": "store_name",
+    "catalogsList": [
+        {
+            "id":catalog_id,
+            "itemsList": [
+                {
+                    "id": item_id,
+                    "name": "item_name",
+                    "price": item_price,
+                    "stock": item_stock
+                }
+            ]
+        }
+    ]
 }
 
-(DELETE)
-/api/stores/catalogs
+POST: api/stores/purchase
+
+[[item_id,item_qauntity]]
+
+GET: api/stores/catalog/{id}
+
+GET: api/stores/catalogs
+
+GET: api/stores/items
+
+DELETE: /api/stores/catalogs
 {
-    "name":"Home",
-    "catalogsList":[
-        {"id":66}]
+    "name": "store_name",
+    "catalogsList": [
+        {
+            "id":catalog_id
+        }
+    ]
 }
 
